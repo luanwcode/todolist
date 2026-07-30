@@ -7,6 +7,26 @@
 </head>
 <body>
     <h1>Hello {{ name }}! This is the home of your to-do list</h1>
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Situation</th>
+            <th>Creation date</th>
+            <th>Status</th>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{task.name}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.completed}}</td>
+                    <td>{{task.date_creation}}</td>
+                    <td>{{task.status}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <a href="{% url 'tasks:add' %}" ><button>Add Task</button></a>
 </body>
 </html>
