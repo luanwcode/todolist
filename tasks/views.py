@@ -30,3 +30,19 @@ def tasks_remove(request:HttpRequest, id):
 
     return redirect("tasks:home")
 
+def tasks_edit(request:HttpRequest, id):
+    task = get_object_or_404(TaskModel, id=id)
+
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect("tasks:home")
+
+    form = TaskForm(instance=task)
+    context = {
+        "form": form
+    }
+    return render(request, 'tasks/edit.html', context)
+
+
