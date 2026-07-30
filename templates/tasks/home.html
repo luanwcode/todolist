@@ -20,9 +20,8 @@
                 <tr>
                     <td>{{task.name}}</td>
                     <td>{{task.description}}</td>
-                    <td>{{task.completed}}</td>
+                    <td>{% if task.completed %} Completed {% else %} Incomplete {% endif %}</td>
                     <td>{{task.date_creation}}</td>
-                    <td>{{task.status}}</td>
                     <td><a href="{% url 'tasks:remove' task.id %}">Delete</a></td>
                     <td><a href="{% url 'tasks:edit' task.id %}">Edit</a></td>
                 </tr>
