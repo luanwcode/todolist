@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todolist Home</title>
+    <title>To-do list index</title>
 </head>
 <body>
-    <h1>Hello {{ name }}! This is the home of your to-do list</h1>
-    <a href="{% url 'tasks:add' %}" ><button>Add Task</button></a>
+    <a href="{% url 'tasks:home' %}"> <button>To-do list home</button></a>
 </body>
 </html>
