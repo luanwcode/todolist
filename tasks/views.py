@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpRequest
+from . forms import TaskForm
 
 def tasks_home(request):
     context = {
@@ -8,5 +9,15 @@ def tasks_home(request):
 
     return render(request, 'tasks/home.html', context)
 
-def tasks_add(request):
-    return HttpResponse("Here you can add your tasks")
+def tasks_add(request:HttpRequest):
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("tasks:home")
+
+
+    context = {
+        "form": TaskForm
+    }
+    return render(request, 'tasks/add.html', context)
