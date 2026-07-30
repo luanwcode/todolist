@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpRequest
 from . forms import TaskForm
 from . models import TaskModel
@@ -23,3 +23,10 @@ def tasks_add(request:HttpRequest):
         "form": TaskForm
     }
     return render(request, 'tasks/add.html', context)
+
+def tasks_remove(request:HttpRequest, id):
+    task = get_object_or_404(TaskModel, id=id)
+    task.delete()
+
+    return redirect("tasks:home")
+

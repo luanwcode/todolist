@@ -23,6 +23,7 @@
                     <td>{{task.completed}}</td>
                     <td>{{task.date_creation}}</td>
                     <td>{{task.status}}</td>
+                    <td><a href="{% url 'tasks:remove' task.id %}">Delete</a></td>
                 </tr>
             {% endfor %}
         </tbody>
