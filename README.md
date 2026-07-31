@@ -11,5 +11,3 @@ Caso por algum motivo você queira testar o projeto localmente siga esses passos
 3. Certifique-se que você tenha o gerenciador de pacotes do Python `pip` com o comando `python -m pip --version` (Instalações modernas do python já incluem o `pip` automaticamente)
 4. Instale o Django com o comando `python -m pip install django`
 5. Dentro da pasta 'todolist' rode o comando `python manage.py runserver`, o projeto rodará em localhost:8000
-
-s

@@ -4,30 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todolist Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>Hello {{ name }}! This is the home of your to-do list</h1>
-    <table border="1">
-        <thead>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Situation</th>
-            <th>Creation date</th>
-            <th>Status</th>
-        </thead>
-        <tbody>
-            {% for task in tasks %}
-                <tr>
-                    <td>{{task.name}}</td>
-                    <td>{{task.description}}</td>
-                    <td>{% if task.completed %} Completed {% else %} Incomplete {% endif %}</td>
-                    <td>{{task.date_creation}}</td>
-                    <td><a href="{% url 'tasks:remove' task.id %}">Delete</a></td>
-                    <td><a href="{% url 'tasks:edit' task.id %}">Edit</a></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="{% url 'tasks:add' %}" ><button>Add Task</button></a>
+
+    <div class="flex flex-col items-center justify-center">
+        <h1>Hello {{ name }}! This is the home of your to-do list</h1>
+        <table class="table-auto border border border-black text-center">
+            <thead>
+                <th class="border border-black">Name</th>
+                <th class="border border-black">Description</th>
+                <th class="border border-black">Situation</th>
+                <th class="border border-black">Creation date</th>
+                <th class="border border-black" colspan="2">Options</th>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td class="border border-black">{{task.name}}</td>
+                        <td class="border border-black">{{task.description}}</td>
+                        <td class="border border-black">{% if task.completed %} Completed {% else %} Incomplete {% endif %}</td>
+                        <td class="border border-black">{{task.date_creation}}</td>
+                        <td class=""> <a href="{% url 'tasks:remove' task.id %}"> <button class="bg-red-500 hover:bg-red-400 text white bold rounded"> Delete </button> </a> </td>
+                        <td class=""> <a href="{% url 'tasks:edit' task.id %}"> <button class="bg-blue-500 hover:bg-blue-400 text-white bold rounded"> Edit </button> </a> </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'tasks:add' %}" ><button>Add Task</button></a>
+    </div>
 </body>
 </html>
