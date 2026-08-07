@@ -2,10 +2,16 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpRequest
 from . forms import TaskForm
 from . models import TaskModel
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='users:login')
 def tasks_home(request):
+    user = request.user
+
     context = {
-        "name": "Luan",
+        "name": user.username,
         "tasks": TaskModel.objects.all()
     }
 
